@@ -16,6 +16,8 @@ var index = require('./routes/index');
 var inventory = require('./routes/inventory')
 var users = require('./routes/users');
 var api = require('./routes/api');
+var student = require('./routes/student');
+var faculty = require('./routes/faculty');
 
 var app = express();
 
@@ -56,6 +58,8 @@ app.use('/users', users);
 app.use('/api', api);
 app.use('/inventory', inventory);
 app.use('/', index);
+app.use('/student', student);
+app.use('/faculty', faculty);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

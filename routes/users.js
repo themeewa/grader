@@ -12,8 +12,8 @@ router.use(csrfProtection);
 router.get('/profile', isLoggedIn, function(req, res, next) {
 	// console.log(req);
 	console.log(req.user);
-	if (req.user.role=="student") {res.render('student');}
-	if (req.user.role=="faculty") {res.render('faculty');}
+	if (req.user.role=="student") {res.redirect('/student');}
+	if (req.user.role=="faculty") {res.redirect('/faculty');}
 	// else {res.render('user/profile');}
 });
 

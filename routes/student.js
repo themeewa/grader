@@ -12,18 +12,11 @@ router.use(csrfProtection);
 router.get('/', isLoggedIn, function(req, res, next) {
 	// console.log(req);
 	console.log(req.user);
-	if (req.user.role=="student") {res.redirect('/student');}
-	if (req.user.role=="faculty") {res.render('faculty/facultyprofile');}
+	if (req.user.role=="student") {res.render('student/studentprofile');}
+	if (req.user.role=="faculty") {res.redirect('/faculty');}
 	// else {res.render('user/profile');}
 });
 
-router.get('/setpattern', isLoggedIn, function(req, res, next) {
-	// console.log(req);
-	console.log(req.user);
-	if (req.user.role=="student") {res.redirect('/student');}
-	if (req.user.role=="faculty") {res.render('faculty/setPattern.hbs');}
-	// else {res.render('user/profile');}
-});
 module.exports = router;
 
 function isLoggedIn(req,res,next) {
