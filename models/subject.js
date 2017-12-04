@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var subjectSchema = new Schema({
-	subjectCode: {type:Number, required:true,default:'it825'},
+	subjectCode: {type:String, required:true,default:'IT825'},
 	subjectName: {type:String, required:true,default:'networks'},
 	pattern:[{
 		type:{type:String, required:true},
@@ -10,7 +10,7 @@ var subjectSchema = new Schema({
 		totalMarks:{type:Number, required:true}
 	}],
 	studentList:[
-		rollNo:{type:String}
+		{rollNo:{type:String}}
 	]
 });
 

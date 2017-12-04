@@ -9,13 +9,14 @@ router.post('/addPattern',isLoggedInApi,function(req, res, next) {
     res.end();
   }
   else {
+    console.log(req.body);
     var currpattern ={
       type:req.body.type,
       weight:req.body.weight,
       totalMarks:req.body.totalMarks,
     };
     console.log(currpattern);
-    return Subject.findOneAndUpdate({subjectCode:"it825","pattern.type":currpattern.type},{ $push: { pattern: currpattern } },{new:true,upsert:true}, function(err, subject){
+    return Subject.findOneAndUpdate({subjectCode:"IT825"},{ $push: { pattern: currpattern } },{new:true,upsert:true}, function(err, subject){
      console.log('subject.findoneandupdate called');
      if (err) {
        console.log('error from findoneandupdate: '+err);

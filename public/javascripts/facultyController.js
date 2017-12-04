@@ -12,6 +12,7 @@ mainApp.controller('facultyController',['$scope', '$http', function($scope,$http
 		totalMarks:0
 	}
 	$scope.addExam = function() {
+		console.log($scope.curExam);
 		$scope.sendExam($scope.curExam)
 		.then(function(res){
 			console.log("response from send exam in addexam");
