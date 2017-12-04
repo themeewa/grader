@@ -1,1 +1,19 @@
-set pattern
+<div ng-app = "mainApp" ng-controller = "facultyController">
+  <form name="examForm" ng-submit = "addExam()">
+      <div class="form-row">
+      <div class="form-group col-md-3">
+        <label for="examtype" class="col-form-label">type</label>
+        <input type="text" class="form-control" id="inputexamtype" ng-required="true" ng-model = "currExam.type" placeholder="type of exam">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="examweight" class="col-form-label">weight</label>
+        <input type="text" class="form-control" id="inputexamweight" ng-required="true" ng-model = "currExam.weight" placeholder="weight of exam">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="examtype" class="col-form-label">marks</label>
+        <input type="text" class="form-control" id="inputexamtype" ng-required="true" ng-model = "currExam.totalMarks" placeholder="total marks of exam">
+      </div>
+      <button class="btn btn-sauccess" type="submit">save order</button>
+  </form>
+  <div class="clearfix"></div>
+</div>

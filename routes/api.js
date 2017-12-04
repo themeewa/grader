@@ -2,7 +2,50 @@ var express = require('express');
 var router = express.Router();
 var User  = require('../models/user');
 var Customer  = require('../models/customer');
-var Order  = require('../models/order');
+var Subject  = require('../models/subject');
+
+router.post('/addPattern',isLoggedInApi,function(req, res, next) {
+    if(!req.body){
+    res.end();
+  }
+  else {
+    var currpattern ={
+      type:req.body.type,
+      weight:req.body.weight,
+      totalMarks:req.body.totalMarks,
+    };
+    console.log(currpattern);
+    return Subject.findOneAndUpdate({subjectCode:"it825","pattern.type":currpattern.type},{ $push: { pattern: currpattern } },{new:true,upsert:true}, function(err, subject){
+     console.log('subject.findoneandupdate called');
+     if (err) {
+       console.log('error from findoneandupdate: '+err);
+       res.status(404).json({
+        status:false,
+        message:"error",
+        err:err
+      });
+     }
+     if (!subject) {
+       console.log('no such subject');
+       res.status(200).json({
+        status:false,
+        message:"subject not found"
+      });
+     }
+     if (subject) {
+      console.log("subject found");
+      // saveNewCustomer({custPhone:order.custphone,custName:order.custname});
+      // console.log("moved past custfun");
+      res.status(200).json({
+        status:true,
+        message:"order found",
+        subjdata:subject
+      });
+    }
+   });
+  }
+});
+
 
 router.post('/saveNewOrder',isLoggedInApi,function(req, res, next) {
   console.log(req.body);
